@@ -5,7 +5,7 @@
 
 ## Overview
 
-This is a Stock Trading FAQ Assistant application built with FastAPI and Timescale Vector. It allows users to ask questions about stock trading and get answers based on a knowledge base, with the ability to see the retrieved context and thought process.
+This is a Stock Trading Assistant application built with FastAPI and Timescale Vector. It allows users to ask questions about stock trading and get answers based on a knowledge base, with the ability to see the retrieved context and thought process.
 
 ## Features
 
