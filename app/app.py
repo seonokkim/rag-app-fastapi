@@ -87,9 +87,32 @@ if use_date_filter:
 else:
     time_range = None
 
+# Use session state to store the current query
+if 'query' not in st.session_state:
+    st.session_state.query = ''
+
 # Main search interface
 st.header("Search FAQ")
-query = st.text_input("Enter your question:", placeholder="What are the best times to trade stocks?")
+query = st.text_input("Enter your question:", key="main_query_input", value=st.session_state.query, placeholder="e.g., What is a stock?")
+
+# Add example questions
+st.markdown("**Or try these examples:**")
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    if st.button("What is a bond?"):
+        st.session_state.query = "What is a bond?"
+        st.rerun()
+
+with col2:
+    if st.button("What is technical analysis?"):
+        st.session_state.query = "What is technical analysis?"
+        st.rerun()
+
+with col3:
+    if st.button("What is risk management?"):
+        st.session_state.query = "What is risk management?"
+        st.rerun()
 
 if query:
     # Prepare search parameters
@@ -145,4 +168,4 @@ if query:
 
 # Footer
 st.markdown("---")
-st.markdown("Built with Streamlit • Powered by TimescaleDB and OpenAI") 
+st.markdown("2025 Seonok Kim") 
