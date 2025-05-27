@@ -5,12 +5,12 @@
 
 ## Overview
 
-This is a Stock Trading Assistant application built with FastAPI and Timescale Vector. It allows users to ask questions about stock trading and get answers based on a knowledge base, with the ability to see the retrieved context and thought process.
+This is a Stock Trading FAQ Assistant application built with FastAPI and utilizing **PostgreSQL** with the **Timescale Vector** extension for efficient Retrieval-Augmented Generation (RAG). It allows users to ask questions about stock trading and get answers based on a knowledge base, with the ability to see the retrieved context and thought process.
 
 ## Features
 
 - FastAPI backend for handling API requests.
-- Integration with Timescale Vector for efficient RAG (Retrieval-Augmented Generation).
+- Integration with **PostgreSQL and Timescale Vector** for efficient vector storage and similarity search.
 - Simple HTML/JavaScript frontend for a chat interface.
 - Displays AI-generated answers, thought process, and search results with distance scores.
 - Collapsible sections for thought process and search results.
