@@ -2,9 +2,14 @@ from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse
+from pydantic import BaseModel
 from datetime import datetime
 from app.database.vector_store import VectorStore
 from app.services.synthesizer import Synthesizer
+
+# Define Pydantic model for chat request body
+class ChatRequest(BaseModel):
+    query: str
 
 app = FastAPI(title="Stock Trading FAQ Assistant")
 
@@ -99,6 +104,37 @@ async def search(
     
     # Generate response
     response = Synthesizer.generate_response(question=query, context=results)
+    
+    return {
+        "answer": response.answer,
+        "thought_process": response.thought_process,
+        "enough_context": response.enough_context,
+        "results": [
+            {
+                "content": result[2],
+                "metadata": result[1],
+                "similarity": result[4]
+            }
+            for result in results
+        ]
+    }
+
+@app.get("/chat", response_class=HTMLResponse)
+async def chat_page(request: Request):
+    return templates.TemplateResponse("chat.html", {"request": request})
+
+@app.post("/chat")
+async def chat(request: ChatRequest):
+    # Prepare search parameters
+    search_params = {
+        "limit": 3
+    }
+    
+    # Perform search
+    results = vec.search(request.query, return_dataframe=False, **search_params)
+    
+    # Generate response
+    response = Synthesizer.generate_response(question=request.query, context=results)
     
     return {
         "answer": response.answer,
