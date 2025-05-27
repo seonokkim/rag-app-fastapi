@@ -1,11 +1,11 @@
-name: timescaledb
+name: rag-app-fastapi
 
 services:
   timescaledb:
     image: timescale/timescaledb-ha:pg16
-    container_name: timescaledb
+    container_name: rag-timescaledb
     environment:
-      - POSTGRES_DB=postgres
+      - POSTGRES_DB=rag_db
       - POSTGRES_PASSWORD=password
     ports:
       - "5433:5432"
