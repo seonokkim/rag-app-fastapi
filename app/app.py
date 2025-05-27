@@ -15,10 +15,10 @@ st.set_page_config(
 )
 
 # Title and description
-st.title("🔍 FAQ Search System")
+st.title("📈 Stock Trading FAQ Assistant")
 st.markdown("""
-This application allows you to search through our FAQ database using natural language.
-You can filter results by category, date range, and more.
+This application helps you find answers to common stock trading questions using natural language.
+Filter by category to find specific trading-related information.
 """)
 
 # Sidebar for filters
@@ -27,19 +27,50 @@ st.sidebar.header("Search Filters")
 # Category filter
 categories = [
     "All",
-    "Shipping",
-    "Order Management",
-    "Returns",
-    "Payment",
-    "Product Information",
-    "Customer Support",
-    "Services",
-    "Pricing",
-    "Account Management",
-    "Rewards",
-    "Communication",
-    "Company Information",
-    "Privacy"
+    "Trading Strategies",
+    "Trading Strategy",
+    "Trading Basics",
+    "Trading Concepts",
+    "Trading Tools",
+    "Trading Options",
+    "Technical Analysis",
+    "Fundamental Analysis",
+    "Market Indicators",
+    "Market Structure",
+    "Market Function",
+    "Market Theory",
+    "Market Benchmarks",
+    "Market Cycles",
+    "Market Anomalies",
+    "Risk Management",
+    "Order Types",
+    "Brokerage Accounts",
+    "Options Strategy",
+    "Portfolio Management",
+    "Investment Options",
+    "Investment Types",
+    "Company Analysis",
+    "Financial Metrics",
+    "Price Metrics",
+    "Earnings Analysis",
+    "Economic Impact",
+    "Industry Basics",
+    "Corporate Finance",
+    "Derivatives",
+    "Dividend Types",
+    "International Investing",
+    "International Risk",
+    "International Access",
+    "Account Types",
+    "Advanced Trading",
+    "Advanced Strategy",
+    "Advanced Risk",
+    "High-Risk Investing",
+    "Employee Benefits",
+    "Tax Rules",
+    "Wealth Building",
+    "Research Tools",
+    "Analysis Methods"
 ]
 
 selected_category = st.sidebar.selectbox("Select Category", categories)
@@ -58,7 +89,7 @@ else:
 
 # Main search interface
 st.header("Search FAQ")
-query = st.text_input("Enter your question:", placeholder="e.g., What are your shipping options?")
+query = st.text_input("Enter your question:", placeholder="What are the best times to trade stocks?")
 
 if query:
     # Prepare search parameters
